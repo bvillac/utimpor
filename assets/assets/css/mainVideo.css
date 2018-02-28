@@ -1,0 +1,34 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07-dic-2016, 22:01:02
+    Author     : root
+*/
+
+/***** DATOS DE VIDEO ****/
+
+video {
+    object-fit: fill;
+    width: 30%;
+}
+
+/*button,
+input,
+select {
+    font-weight: normal;
+    padding: 2px 4px;
+    text-decoration: none;
+    display: inline-block;
+    text-shadow: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.make-center {
+    text-align: center;
+    padding: 5px 10px;
+}*/
+

@@ -1,0 +1,20 @@
+{
+  "name": "ProyectRdmi",
+  "version": "0.0.1",
+  "description": "ProyectoWebRtc",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon /var/www/rdmi/html/rdmi/nodejs/node_modules/rtcmulticonnection-v3/server.js"
+  },
+  "author": "Byron Villacreses",
+  "license": "GLP",
+  "dependencies": {
+    "express": "~4.15.2",
+    "socket.io": "~1.7.3",
+    "log": "~1.4.0",
+    "rtcmulticonnection-v3": "~3.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "~1.11.0"
+  }
+}

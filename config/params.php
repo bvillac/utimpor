@@ -1,0 +1,35 @@
+<?php
+return [
+    'copyright' => 'Utimpor S.A.',
+    'alias' => 'utimpor',
+    'siteName' => 'Utimpor S.A.',
+    'web' => 'http://www.utimpor.com/',
+    'version' => '1.0',
+    'adminEmail' => 'bvillacreses@utimpor.com',
+    'contactoEmail' => 'pruebacontacto@utimpor.com',
+    'culture' => 'es-ES',
+    'cookieSession' => 3600*24*30,
+    'logfile' => __DIR__ . '/../runtime/logs/utimpor.log',
+    'limitRow' => 10,
+    'pageSize' => 20,
+    'dateTimeByDefault' => 'Y-m-d H:i:s',
+    'dateByDefault' => 'Y-m-d',
+    'datePickerDefault' => 'yyyy-mm-dd',
+    'themesIconsFolder' => '/assets/img/accions/',
+    'themesLogosFolder' => '/assets/img/logos/',
+    'themesModulesFolder' => '/assets/img/modules/',
+    'documentFolder' => '/uploads/',
+    'imgFolder' => '/site/getimage/?route=/uploads/',
+    'FileExtensions' => ['jpg','png','pdf'],
+    'MaxFileSize' => 1024,//Tamaño 1 MB
+    'timeRecursive' => '2',// segundos
+    'numRecursive' => '3',
+    'keywordEncription' => 'PBdoHUHYU909854874HNGFGKO',
+    'tokenid' => 'HU787390kdnhyyejkKJHWFDSYWUQB72573LOSNQ2JKTDCA67253',
+    'numbersecret' => '2983981321',
+    'socialNetworks' => [
+        'facebook' => 'https://www.facebook.com/utimpor',
+        'twitter'  => 'https://twitter.com/utimpor',
+        'youtube'  => 'https://www.youtube.com/user/utimpor',
+    ],
+];
