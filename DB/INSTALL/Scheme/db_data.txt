@@ -1,0 +1,168 @@
+CREATE TABLE `FORMAPAGO` (
+  `IdForma` bigint(20) NOT NULL AUTO_INCREMENT,
+  `FormaPago` varchar(100) DEFAULT NULL,
+  `Codigo` varchar(2) DEFAULT NULL,
+  `Estado` varchar(1) DEFAULT NULL,
+  `FechaInicio` date DEFAULT NULL,
+  `FechaFin` date DEFAULT NULL,
+  PRIMARY KEY (`IdForma`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+INSERT INTO `FORMAPAGO` VALUES (1,'SIN UTILIZACION DEL SISTEMA FINANCIERO','1','1',NULL,NULL),(2,'CHEQUE PROPIO','2','0',NULL,NULL),
+(3,'CHEQUE CERTIFICADO','3','0',NULL,NULL),(4,'CHEQUE DE GERENCIA','4','0',NULL,NULL),(5,'CHEQUE DEL EXTERIOR','5','0',NULL,NULL),
+(6,'DÉBITO DE CUENTA','6','0',NULL,NULL),(7,'TRANSFERENCIA PROPIO BANCO','7','0',NULL,NULL),(8,'TRANSFERENCIA OTRO BANCO NACIONAL','8','0',NULL,NULL),
+(9,'TRANSFERENCIA BANCO EXTERIOR','9','0',NULL,NULL),(10,'TARJETA DE CRÉDITO NACIONAL','10','0',NULL,NULL),
+(11,'TARJETA DE CRÉDITO INTERNACIONAL','11','0',NULL,NULL),(12,'GIRO','12','0',NULL,NULL),
+(13,'DEPOSITO EN CUENTA (CORRIENTE/AHORROS)','13','0',NULL,NULL),(14,'ENDOSO DE INVERSIÒN','14','0',NULL,NULL),
+(15,'COMPENSACIÓN DE DEUDAS','15','0',NULL,NULL),(16,'TARJETA DE DÉBITO','16','0',NULL,NULL),
+(17,'DINERO ELECTRÓNICO','17','0',NULL,NULL),
+(18,'TARJETA PREPAGO','18','0',NULL,NULL),(19,'TARJETA DE CRÉDITO','19','0',NULL,NULL),
+(20,'OTROS CON UTILIZACION DEL SISTEMA FINANCIERO','20','1',NULL,NULL),(21,'ENDOSO DE TÍTULOS','21','0',NULL,NULL);
+
+CREATE TABLE `TIP_CON` (
+  `COD_CON` varchar(2) NOT NULL DEFAULT '',
+  `NOM_CON` varchar(30) DEFAULT NULL,
+  `FEC_CON` date DEFAULT NULL,
+  `POR_R_F` decimal(5,2) DEFAULT NULL,
+  `POR_R_I` decimal(5,2) DEFAULT NULL,
+  `GRA_IVA` decimal(1,0) DEFAULT NULL,
+  `REG_ASO` decimal(5,0) DEFAULT NULL,
+  `FEC_SIS` date DEFAULT NULL,
+  `HOR_SIS` varchar(10) DEFAULT NULL,
+  `USUARIO` varchar(15) DEFAULT NULL,
+  `EQUIPO` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`COD_CON`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `TIP_CON` VALUES ('01','NATURALES SIN CONTABILIDAD','2008-08-01','2.00','70.00','1','0','2009-12-17','18:10:21','conta','ADMINIST'),
+('02','PERSONAS JURIDICAS','2008-08-05','2.00','30.00','1','0','2009-12-17','18:15:35','conta','ADMINIST'),
+('03','CONTRIBUYENTES ESPECIALES','2008-08-05','1.00','30.00','1','0','2009-12-17','18:43:43','conta','ADMINIST'),
+('04','EMPRESAS PUBLICAS','2008-08-05','0.00','0.00','0','0','2009-11-27','18:17:17','admin','TRABAJOIMPRESO'),
+('05','NATURALES CON CONTABILIDAD','2009-12-17','2.00','70.00','1','0','2009-12-17','18:10:57','conta','ADMINIST'),
+('06','PROFESIONAL C/TITULO SUPERIOR','2009-12-17','8.00','100.00','1','0','2009-12-17','18:12:15','conta','ADMINIST'),
+('07','P.N. ALQUILER INMUEBLE','2009-12-17','8.00','100.00','1','0','2009-12-17','18:15:07','conta','ADMINIST'),
+('08','CIAS ALQUILER LOCAL COMERCIAL','2009-12-17','8.00','100.00','1','0','2009-12-17','18:14:47','conta','ADMINIST'),
+('09','EXPORTADORES','2011-01-06','1.00','100.00','1','0','2011-01-06','15:11:32','sis','SIS');
+
+# solicitud de credito clientes
+create  table if not exists mg0024(
+  ids_sol bigint(20) not null auto_increment primary key ,
+  cod_pto varchar(3),
+  cod_caj varchar(3),
+  tip_doc varchar(2),  #tipo de documento
+  num_doc varchar(10),  #numero de documento solicitud
+  fec_ing date not null, #fecha de ingreso solicitud
+  fec_cad date null, 	#fecha de caducidad de la solicitud
+  ids_prp bigint(20),	#id de prospecto
+  cod_emp varchar(10),  #codigo del empleado
+  cod_i_r varchar(2),   #cod identificacion cedula o ruc
+  ced_ruc varchar(15),  #cedula o ruc del prospecto
+  tip_con varchar(2),   #tipo de contribuyente sri
+  raz_soc varchar(100), #razon social de la empresa
+  nom_rpl varchar(100), #nombre representante legal 
+  nom_due varchar(100), #nombre dueño de la empresa
+  nom_ger varchar(100), #nombre gerente de la empresa
+  tip_emp varchar(2),   #tipo empresa publica o privadad o distrib
+  ano_act varchar(3),   #años de actividad de la empresa
+  cod_pai varchar(2),
+  cod_ciu varchar(2),
+  dir_rpl varchar(100), #direccion del representante legal
+  corre_e varchar(100), #correo electronico
+  tel_cel varchar(50),  #telefonos movil separado por ;
+  tel_n01 varchar(50),  #telefonos separado por ;
+  num_fax varchar(50),
+  nom_cto varchar(60),  #nombre contacto
+  tel_cto varchar(20),	#telefono de contacto  
+  idforma bigint(20),   #forma de pago  
+  cre_sol numeric(12,4),#credito solicitado 
+  lim_cre numeric(12,4),#limite  asignado
+  max_cre numeric(12,4),#limite  asignado
+  lim_dia varchar(3),	#plazo de pago en dias
+  tip_viv varchar(3),   #tipo vivienda propia=pro,alquilad=alq y otros=otr
+  tim_viv varchar(5),	#tiempo en vivienda 4:3
+  nom_arr text,		#nombre del arrendatario
+  tel_arr varchar(20),
+  tip_loc varchar(3),   #tipo localpropia=pro,alquilad=alq y otros=otr
+  tim_loc varchar(5),	#tiempo en local 4:3
+  nom_arl text,		#nombre del arrendatario local
+  tel_arl varchar(20),
+  veh_mar text,		#vehiculo marca años
+  pre_hip text,		#prestamo hipotecario
+  cut_men numeric(12,4),#cuota mensual de hipoteca
+  est_aut varchar(1),   #estado autorizacion propecto
+  fec_aut timestamp null default null,    #fecha de autorizacion
+  obs_gen text,		#obrservacion general
+  obs_aut text,  	#observacion de autorizacion
+  est_log varchar(1),
+  fec_cre timestamp not null default current_timestamp,
+  fec_mod timestamp null default null,
+  usuario varchar(15),
+  equipo  varchar(15)
+)engine = innodb default charset=utf8 auto_increment=1;
+
+alter table mg0024
+	add constraint mg0024_fk1 foreign key (tip_con) references TIP_CON (COD_CON);
+alter table mg0024
+	add constraint mg0024_fk2 foreign key (IdForma) references FORMAPAGO (IdForma);
+
+create table `cb0001` (
+  `ids_ban` bigint(20) not null auto_increment,
+  `nom_ban` varchar(50) default null,
+  `nomen_b` varchar(3) default '',
+  `cod_ban` varchar(10) default null,
+  `est_log` varchar(1) default null,
+  `fec_cre` timestamp not null default current_timestamp,
+  `usuario` varchar(15) default null,
+  `equipo` varchar(15) default null,
+  primary key (`ids_ban`)
+) engine=innodb auto_increment=25 default charset=utf8;
+
+
+INSERT INTO `cb0001` VALUES (1,'AMAZONAS S.A.','AM',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(2,'BOLIVARIANO S.A.','BB',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(3,'CITIBANK N.A','BC',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(4,'CAPITAL S.A.','CA',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(5,'COMERCIAL DE MANABI S.A.','CM',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(6,'COOPNACIONAL S.A.','CN',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(7,'D-MIRO S.A.','BD',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(8,'DE GUAYAQUIL S.A.','BG',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(9,'DE LOJA S.A.','BL',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(10,'DE MACHALA S.A.','BM',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(11,'DE LA PRODUCCION PRODUBANCO S.A','PD',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(12,'DEL AUSTRO S.A.','BA',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(13,'DEL LITORAL S.A. ','BL',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(14,'DEL PACIFICO S.A.','PA',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(15,'DELBANK','DB',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(16,'BANCO DESARROLLO DE LOS PUEBLOS S.A.','BS',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(17,'GENERAL RUMIÑAHUI','BR',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(18,'INTERNACIONAL S.A.','BI',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(19,'FINCA S.A.','BF',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(20,'PICHINCHA C.A.','BP',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(21,'PROCREDIT S.A.','PR',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(22,'SOLIDARIO S.A.','BS',NULL,'1','2017-01-10 19:09:23',NULL,NULL),
+(23,'BANECUADOR','BE',NULL,'1','2017-01-10 19:09:23',NULL,NULL),(24,'PROCREDIT','PC',NULL,'1','2017-07-19 15:08:24',NULL,NULL);
+
+
+# solicitud referencias bancarias
+create  table if not exists mg0025(
+  ids_reb bigint(20) not null auto_increment primary key ,
+  ids_sol bigint(20),
+  ids_ban bigint(20),	#ids banco
+  num_cta varchar(10),  #numero de cuenta
+  tip_cta varchar(3),	#ahorro=aho y corriite=cte
+  fec_ape date null,    #fecha de apertura cta
+  cre_ban varchar(2),
+  est_log varchar(1),
+  fec_cre timestamp not null default current_timestamp,
+  fec_mod timestamp null default null,
+  usuario varchar(15),
+  equipo  varchar(15),
+  foreign key (ids_sol) references mg0024 (ids_sol),
+  foreign key (ids_ban) references cb0001 (ids_ban)
+)engine = innodb default charset=utf8 auto_increment=1;
+
+# solicitud referencias personales
+create  table if not exists mg0026(
+  ids_rep bigint(20) not null auto_increment primary key ,
+  ids_sol bigint(20),
+  nom_per varchar(60),  #nombre persona
+  cod_par varchar(60),  #codigo parentesco
+  dir_per varchar(100), #direccion persona
+  tel_res varchar(20),	#telefono de residencia
+  tel_tra varchar(20),	#telefono de trabajo  
+  est_log varchar(1),
+  fec_cre timestamp not null default current_timestamp,
+  fec_mod timestamp null default null,
+  usuario varchar(15),
+  equipo  varchar(15),
+  foreign key (ids_sol) references mg0024 (ids_sol)
+)engine = innodb default charset=utf8 auto_increment=1;
