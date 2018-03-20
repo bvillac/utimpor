@@ -140,6 +140,7 @@ class Accion extends \yii\db\ActiveRecord
         $result = $comando->queryAll();
         $actions = array();
         $actionsArr = "";
+        //Utilities::putMessageLogFile($sql);
         
         foreach($result as $key => $value){
             $link = $value["route"];

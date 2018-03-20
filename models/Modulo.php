@@ -96,9 +96,10 @@ class Modulo extends \yii\db\ActiveRecord
                           inner join (" . $con->dbname . ".omodulo_rol c
                               inner join " . $con->dbname . ".rol d on c.rol_id=d.rol_id)
                           on b.omod_id=c.omod_id)
-                      on b.mod_id=a.mod_id
+                      on b.mod_id=a.mod_id and b.omod_estado_logico=1
                   where a.mod_estado_logico=1 and d.rol_id=:rol_id order by a.mod_orden ";      
         $comando = $con->createCommand($sql);
+        //Utilities::putMessageLogFile($sql);
         $comando->bindParam(":rol_id", $RolId, \PDO::PARAM_INT);
         return $comando->queryAll();
     }

@@ -27,6 +27,8 @@ class CController extends \yii\web\Controller
 //        return $behaviors;
 //    }
     
+    
+    //INIICIO DATOS EJECUCION
     public function runAction($id, $params = []){
         $session = Yii::$app->session;
         $isUser = $session->get('PB_isuser', FALSE);

@@ -143,10 +143,11 @@ class ObjetoModulo extends \yii\db\ActiveRecord
                           inner join (" . $con->dbname . ".omodulo_rol c
                               inner join " . $con->dbname . ".rol d on c.rol_id=d.rol_id)
                           on b.omod_id=c.omod_id and c.omrol_est_log=1)
-                      on b.mod_id=a.mod_id
+                      on b.mod_id=a.mod_id and b.omod_estado_logico=1
                   where a.mod_estado_logico=1 and b.mod_id=:mod_id and b.omod_tipo='S' 
                   and d.rol_id=:rol_id order by b.omod_orden ";      
-        $comando = $con->createCommand($sql);
+        $comando = $con->createCommand($sql);  
+        //Utilities::putMessageLogFile($sql);
         $comando->bindParam(":rol_id", $RolId, \PDO::PARAM_INT);
         $comando->bindParam(":mod_id", $moduloid, \PDO::PARAM_INT);
         return $comando->queryAll();
@@ -164,9 +165,9 @@ class ObjetoModulo extends \yii\db\ActiveRecord
     public function getObjModHijosXObjModPadre($id_module, $id_omod, $id_omodpadre) {
         $RolId= Yii::$app->session->get('RolId', FALSE);
         $con = \Yii::$app->db;
-        $sql = "select b.* from rdmi.objeto_modulo b
-                          inner join (rdmi.omodulo_rol c
-                              inner join rdmi.rol d on c.rol_id=d.rol_id)
+        $sql = "select b.* from " . $con->dbname . ".objeto_modulo b
+                          inner join (" . $con->dbname . ".omodulo_rol c
+                              inner join " . $con->dbname . ".rol d on c.rol_id=d.rol_id)
                           on b.omod_id=c.omod_id
                   where b.omod_estado_logico=1 and d.rol_id=:rol_id and b.omod_id=:omod_id and b.mod_id=:mod_id 
                   and b.omod_padre_id=:omod_padre order by b.omod_orden; ";
@@ -192,9 +193,10 @@ class ObjetoModulo extends \yii\db\ActiveRecord
                           inner join (" . $con->dbname . ".omodulo_rol c
                               inner join " . $con->dbname . ".rol d on c.rol_id=d.rol_id)
                           on b.omod_id=c.omod_id)
-                      on b.mod_id=a.mod_id
+                      on b.mod_id=a.mod_id and b.omod_estado_logico=1
                   where a.mod_estado_logico=1 and d.rol_id=:rol_id order by b.omod_orden ";  
         $comando = $con->createCommand($sql);
+        //Utilities::putMessageLogFile($sql);
         $comando->bindParam(":rol_id", $RolId, \PDO::PARAM_INT);
         return $comando->queryOne();
     }
@@ -208,7 +210,7 @@ class ObjetoModulo extends \yii\db\ActiveRecord
      * @return mixed                        Objeto con los datos de los padres de un objeto modulo
      */
     public static function getParentByObjModule($id_objModulo, $obj) {
-        $sql = "SELECT * FROM objeto_modulo WHERE omod_id=:id_omod AND omod_estado_logico=1 AND omod_estado_activo=1";
+        $sql = "SELECT * FROM " . $con->dbname . ".objeto_modulo WHERE omod_id=:id_omod AND omod_estado_logico=1 AND omod_estado_activo=1";
         $comando = Yii::$app->db->createCommand($sql);
         $comando->bindParam(":id_omod", $id_objModulo, \PDO::PARAM_INT);
         $fila = $comando->queryOne();

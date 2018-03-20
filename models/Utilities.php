@@ -649,6 +649,13 @@ class Utilities {
             $key .= $pattern{mt_rand(0, $max)};
         return $key;
     }
+    public static function tipoSolicitud() {
+        return [
+            '1' => Yii::t("formulario", "Normal"),
+            '2' => Yii::t("formulario", "Distribuidor"),
+ 
+        ];
+    }
     
     public static function genero() {
         return [
