@@ -657,6 +657,15 @@ class Utilities {
         ];
     }
     
+    public static function tipoEmpresa() {
+        return [
+            '1' => Yii::t("formulario", "Privada"),
+            '2' => Yii::t("formulario", "Pública"),
+            '3' => Yii::t("formulario", "Distribuidor"),
+ 
+        ];
+    }
+    
     public static function genero() {
         return [
             //'0' => Yii::t("formulario", "-Select-"),
@@ -743,6 +752,14 @@ class Utilities {
             $command->bindParam(":log_table", $table, \PDO::PARAM_STR);
             $command->bindParam(":log_accion", $accion, \PDO::PARAM_STR);
             $command->execute();
+    }
+    
+    public static function tipoContribuyente() {
+        $con = \Yii::$app->db;
+        $sql="SELECT COD_CON, NOM_CON FROM " . $con->dbname . ".TIP_CON ";
+        //$sql="SELECT esp_id,esp_nombre FROM " . $con->dbname . ".especialidad WHERE esp_est_log=1 ";
+        $comando = $con->createCommand($sql);
+        return $comando->queryAll();
     }
     
     

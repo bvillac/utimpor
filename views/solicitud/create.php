@@ -35,7 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
             </div><!-- /.tab-pane -->
             <div class="tab-pane" id="paso2">
                 <form class="form-horizontal">
-                 
+                    <?= 
+                    $this->render('_form_tab2', 
+                        [//'provincias' => $provincias,
+                        
+                         //'objetivos' => $objetivos
+                            ]); ?>
                 </form>
             </div><!-- /.tab-pane -->
            
