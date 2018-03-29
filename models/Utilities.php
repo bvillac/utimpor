@@ -737,6 +737,14 @@ class Utilities {
         ];
     }
     
+    public static function tipoCuentaBanco() {
+        return [
+            //'0' => Yii::t("formulario", "-Select-"),
+            'AHO' => Yii::t("formulario", "Ahorro"),
+            'CTE' => Yii::t("formulario", "Corriente"),
+        ];
+    }
+    
     /*
      * 
      */
@@ -762,5 +770,12 @@ class Utilities {
         return $comando->queryAll();
     }
     
+    
+    public static function consulBancos() {
+        $con = \Yii::$app->db;
+        $sql="SELECT ids_ban Ids,nom_ban Nombre FROM " . $con->dbname . ".cb0001 WHERE est_log=1;";
+        $comando = $con->createCommand($sql);
+        return $comando->queryAll();
+    }
     
 }
