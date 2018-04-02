@@ -87,6 +87,7 @@ create  table if not exists mg0024(
   nom_arl text,		#nombre del arrendatario local
   tel_arl varchar(20),
   veh_mar text,		#vehiculo marca años
+  veh_val text,		#vehiculo valor estimado
   pre_hip text,		#prestamo hipotecario
   cut_men numeric(12,4),#cuota mensual de hipoteca
   est_aut varchar(1),   #estado autorizacion propecto

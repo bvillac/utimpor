@@ -88,6 +88,14 @@ use kartik\date\DatePicker;
     </div>
 
 </div>
+<div class="col-md-6">
+    <div class="col-sm-3">  
+        <?= Html::a('<span class="glyphicon glyphicon-erase"></span> ' . Yii::t("accion", "Limpiar"), 'javascript:', ['id' => 'cmd_clearCita','class' => 'btn btn-primary btn-block']); ?>   
+    </div>
+    <div class="col-sm-3">  
+        <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> ' . Yii::t("accion", "Save"), 'javascript:', ['id' => 'cmd_saveCita','class' => 'btn btn-primary btn-block']); ?>   
+    </div>
+</div>
 
 
 <div class="col-md-12">

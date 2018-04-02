@@ -43,7 +43,27 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]); ?>
                 </form>
             </div><!-- /.tab-pane -->
+            <div class="tab-pane" id="paso3">
+                <form class="form-horizontal">
+                    <?= 
+                    $this->render('_form_tab3', 
+                        [//'provincias' => $provincias,
+                        
+                         //'objetivos' => $objetivos
+                            ]); ?>
+                </form>
+            </div><!-- /.tab-pane -->
            
+            <div class="tab-pane" id="paso4">
+                <form class="form-horizontal">
+                    <?= 
+                    $this->render('_form_tab4', 
+                        [//'provincias' => $provincias,
+                        
+                         //'objetivos' => $objetivos
+                            ]); ?>
+                </form>
+            </div><!-- /.tab-pane -->
             
         </div><!-- /.tab-content -->
     </div><!-- /.nav-tabs-custom -->

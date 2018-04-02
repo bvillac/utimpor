@@ -745,6 +745,24 @@ class Utilities {
         ];
     }
     
+    public static function tipoBienCasa() {
+        return [
+            '0' => Yii::t("formulario", "-Select-"),
+            '1' => Yii::t("formulario", "Propia"),
+            '2' => Yii::t("formulario", "Alquilada"),
+            '3' => Yii::t("formulario", "Otros"),
+        ];
+    }
+    
+    public static function tipoBienLocalComercial() {
+        return [
+            '0' => Yii::t("formulario", "-Select-"),
+            '1' => Yii::t("formulario", "Propia"),
+            '2' => Yii::t("formulario", "Alquilada"),
+            '3' => Yii::t("formulario", "Hipotecado"),
+        ];
+    }
+    
     /*
      * 
      */
@@ -774,6 +792,13 @@ class Utilities {
     public static function consulBancos() {
         $con = \Yii::$app->db;
         $sql="SELECT ids_ban Ids,nom_ban Nombre FROM " . $con->dbname . ".cb0001 WHERE est_log=1;";
+        $comando = $con->createCommand($sql);
+        return $comando->queryAll();
+    }
+    
+    public static function formaPago() {
+        $con = \Yii::$app->db;
+        $sql="SELECT IdForma Ids,FormaPago Nombre FROM " . $con->dbname . ".FORMAPAGO WHERE Estado=1 ";
         $comando = $con->createCommand($sql);
         return $comando->queryAll();
     }
