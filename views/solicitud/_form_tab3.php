@@ -127,8 +127,13 @@ use branchonline\lightbox\Lightbox;
     <div class="form-group">
         <label for="cmb_idforma" class="col-sm-3 control-label"><?= Yii::t("perfil", "Forma Pago") ?></label>
         <div class="col-sm-9">
-            <?= Html::dropDownList("cmb_idforma", 0, app\models\Utilities::formaPago(), ["class" => "form-control", "id" => "cmb_idforma"]) ?>
+            <?=
+            Html::dropDownList(
+                    "cmb_idforma", 0, ['0' => Yii::t('formulario', '-Select-')] + ArrayHelper::map(app\models\Utilities::formaPago(), 'Ids', 'Nombre'), ["class" => "form-control", "id" => "cmb_idforma"]
+            )
+            ?>
         </div>
+        
     </div>
 </div>
 

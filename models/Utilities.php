@@ -651,7 +651,8 @@ class Utilities {
     }
     public static function tipoSolicitud() {
         return [
-            '1' => Yii::t("formulario", "Normal"),
+            '0' => Yii::t("formulario", "-Select-"),
+            '1' => Yii::t("formulario", "Cliente Final"),
             '2' => Yii::t("formulario", "Distribuidor"),
  
         ];

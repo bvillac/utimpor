@@ -45,7 +45,7 @@ use kartik\date\DatePicker;
 </div>
 
 
-<div class="col-md-6">
+<!--<div class="col-md-6">
     <div class="form-group">
         <label for="dtp_fec_ape" class="col-sm-3 control-label"><?= Yii::t("perfil", "F.Apertura") ?></label>
         <div class="col-sm-9">
@@ -70,7 +70,7 @@ use kartik\date\DatePicker;
             
         </div>
     </div>
-</div>
+</div>-->
 
 <div class="col-md-6">
     <div class="form-group">
@@ -94,6 +94,35 @@ use kartik\date\DatePicker;
     </div>
     <div class="col-sm-3">  
         <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> ' . Yii::t("accion", "Save"), 'javascript:', ['id' => 'cmd_saveCita','class' => 'btn btn-primary btn-block']); ?>   
+    </div>
+</div>
+<div class="col-md-12">
+        <div class="form-group">
+            <div class="col-md-2">
+                <a id="add_Producto" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span><?= Yii::t("formulario", "Add Product") ?></a>
+            </div>
+        </div>  
+    </div>
+
+<div class="col-md-12">
+    <div class="form-group">
+        <div class="box-body table-responsive no-padding">
+            <table  id="TbG_Productos" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="display:none; border:none;"><?= Yii::t("formulario", "Ids") ?></th>
+                        <th><?= Yii::t("formulario", "Banco") ?></th>
+                        <th><?= Yii::t("formulario", "T.Cuenta") ?></th>
+                        <th><?= Yii::t("formulario", "Número") ?></th>
+                        <th><?= Yii::t("formulario", "Credito") ?></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
