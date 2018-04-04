@@ -16,6 +16,7 @@ function retornarIndexArray(array, property, value) {
     }
     return index;
 }
+
 function codigoExiste(value, property, lista) {
     if (lista) {
         var array = JSON.parse(lista);
@@ -36,8 +37,6 @@ function findAndRemove(array, property, value) {
     }
     return array;
 }
-
-
 
 $(document).ready(function () {
      /*DATOS DE TABLA BANCO*/
@@ -69,11 +68,11 @@ function retornaFilaProducto(c, Grid, TbGtable, op) {
     //var RutaImagenAccion='ruta IMG'//$('#txth_rutaImg').val();
     var strFila = "";
     //var imgCol='<img class="btn-img" src="'+RutaImagenAccion+'/acciones/eliminar.png" >';
-    strFila += '<td style="display:none; border:none;">' + Grid[c]['pro_id'] + '</td>';
-    strFila += '<td>' + Grid[c]['pro_nombre'] + '</td>';
-    strFila += '<td>' + Grid[c]['pro_porcentaje_value'] + '</td>';
+    strFila += '<td style="display:none; border:none;">' + Grid[c]['ids_reb'] + '</td>';
+    strFila += '<td>' + Grid[c]['ids_ban'] + '</td>';
+    strFila += '<td>' + Grid[c]['num_cta'] + '</td>';
     //strFila +='<td>'+ Grid[c]['pro_foto']+'</td>';
-    strFila += '<td>';
+    /*strFila += '<td>';
     //Cuando hay Actualizacion de Datos
     if(AccionTipo=="Update"){
         var imgFoto=(Grid[c]['accion']=='edit')?Grid[c]['pro_foto']:limpiarFake($('#txth_producto_foto').val());
@@ -81,7 +80,7 @@ function retornaFilaProducto(c, Grid, TbGtable, op) {
     }else{
         strFila += (Grid[c]['pro_foto'] != "") ? '<a data-title="'+ Grid[c]['pro_nombre'] +'" data-lightbox="image-'+Math.floor((Math.random() * 10) + 1)+'" href="' + $('#txth_imgfolder').val() + $('#txt_ftem_cedula').val() + '/productos/' + limpiarFake($('#txth_producto_foto').val()) + '">Ver Foto</a>' : '<span class="label label-danger">No Tiene Foto</span>';
     }
-    strFila += '</td>';
+    strFila += '</td>';*/
     //strFila +='<td>'+ Grid[c]['pro_detalle_uso']+'</td>';
     strFila += '<td>';//¿Está seguro de eliminar este elemento?
     //strFila +='<a class="btn-img" onclick="eliminarItemsProducto('+Grid[c]['DEP_ID']+',\''+TbGtable+'\')" >'+imgCol+'</a>';
@@ -130,22 +129,23 @@ function eliminarItemsProducto(val, TbGtable) {
 
 function agregarItemsBanco(opAccion) {
     var tGrid = 'TbG_Productos';
-    var nombre = $('#txt_prod_nombre').val();
+    var nombre = $('#txt_num_cta').val();
+    alert($('#cmb_banco option:selected').val());
     //Verifica que tenga nombre producto y tenga foto
-    if ($('#txt_prod_nombre').val() != "" && $('#txth_producto_foto').val() != "") {
-        var valor = $('#txt_prod_nombre').val();
+    if ($('#txt_num_cta').val() != "") {
+        var valor = $('#txt_num_cta').val();
         if (opAccion != "edit") {
             //*********   AGREGAR ITEMS *********
             var arr_Grid = new Array();
-            if (sessionStorage.dts_Producto) {
+            if (sessionStorage.dts_refeBancos) {
                 /*Agrego a la Sesion*/
-                arr_Grid = JSON.parse(sessionStorage.dts_Producto);
+                arr_Grid = JSON.parse(sessionStorage.dts_refeBancos);
                 var size = arr_Grid.length;
                 if (size > 0) {
                     //Varios Items
-                    if (codigoExiste(nombre, 'pro_nombre', sessionStorage.dts_Producto)) {//Verifico si el Codigo Existe  para no Dejar ingresar Repetidos
+                    if (codigoExiste(nombre, 'pro_nombre', sessionStorage.dts_refeBancos)) {//Verifico si el Codigo Existe  para no Dejar ingresar Repetidos
                         arr_Grid[size] = objProducto(size); //objAntDep(retornarIndexArray(JSON.parse(sessionStorage.atc_antDeporte),'DEP_NOMBRE',valor),JSON.parse(sessionStorage.atc_antDeporte));
-                        sessionStorage.dts_Producto = JSON.stringify(arr_Grid);
+                        sessionStorage.dts_refeBancos = JSON.stringify(arr_Grid);
                         addVariosItemProducto(tGrid, arr_Grid, -1);
                         limpiarDetalle();
                     } else {
@@ -164,6 +164,7 @@ function agregarItemsBanco(opAccion) {
                 //No existe la Session
                 //Primer Items
                 //arr_Grid[0] = objAntDep(retornarIndexArray(JSON.parse(sessionStorage.dts_Producto),'pro_nombre',valor),JSON.parse(sessionStorage.dts_Producto));
+                alert("llego 1");
                 arr_Grid[0] = objProducto(0);
                 sessionStorage.dts_Producto = JSON.stringify(arr_Grid);
                 addPrimerItemProducto(tGrid, arr_Grid, 0);
@@ -178,38 +179,39 @@ function agregarItemsBanco(opAccion) {
 }
 
 function limpiarDetalle() {
-    $('#txt_prod_nombre').val("");
-    $('#txt_detalle_uso').val("");
-    $("#cmb_por_id option[value=3]").attr("selected", true);
-    $('#chk_envase').prop('checked', false);
-    $('#chk_empaque').prop('checked', false);
-    $('#chk_etiqueta').prop('checked', false);
-    $('#chk_publicidad').prop('checked', false);
-    $('#chk_otros').prop('checked', false);
+    $('#txt_num_cta').val("");
+    //$('#txt_detalle_uso').val("");
+    //$("#cmb_por_id option[value=3]").attr("selected", true);
+//    $('#chk_envase').prop('checked', false);
+//    $('#chk_empaque').prop('checked', false);
+//    $('#chk_etiqueta').prop('checked', false);
+//    $('#chk_publicidad').prop('checked', false);
+//    $('#chk_otros').prop('checked', false);
     //Quita los Alertas
     removeIco('#txt_prod_nombre');
     removeIco('#txt_detalle_uso');
     //$('#txt_producto_foto').fileinput('upload');
-    $('#txth_producto_foto').val("");
-    $('#txt_producto_foto').val("");
-    $('#txt_producto_foto').fileinput('enable');
-    $('#txt_producto_foto').fileinput('refresh');
+  
 }
 
 function objProducto(indice) {
+    alert("llego 2");
     var rowGrid = new Object();
-    rowGrid.pro_id = indice;
-    rowGrid.pro_ftem_id = 0;
-    rowGrid.pro_nombre = $('#txt_prod_nombre').val();
-    rowGrid.pro_porcentaje = $('#cmb_por_id option:selected').val();
-    rowGrid.pro_porcentaje_value = $('#cmb_por_id option:selected').text();
-    rowGrid.pro_foto = limpiarFake($('#txth_producto_foto').val());
-    rowGrid.pro_detalle_uso = $('#txt_detalle_uso').val();
-    rowGrid.pro_envase = ($("#chk_envase").prop("checked")) ? 1 : 0;
-    rowGrid.pro_empaque = ($("#chk_empaque").prop("checked")) ? 1 : 0;
+    rowGrid.ids_reb = indice;
+    //rowGrid.ids_reb = 0;
+    //rowGrid.pro_nombre = $('#txt_prod_nombre').val();
+    //rowGrid.ids_ban  = $('#cmb_por_id option:selected').val();
+    //rowGrid.ids_ban  = $('#cmb_por_id option:selected').text();
+    rowGrid.ids_ban =$('#cmb_banco option:selected').val();
+    rowGrid.tip_cta =$('#cmb_tip_cta option:selected').text();
+    rowGrid.num_cta = $('#txt_num_cta').val();
+    //rowGrid.pro_envase = ($("#rbt_op1").prop("checked")) ? 1 : 0;
+    
+    /*rowGrid.pro_empaque = ($("#chk_empaque").prop("checked")) ? 1 : 0;
     rowGrid.pro_etiqueta = ($("#chk_etiqueta").prop("checked")) ? 1 : 0;
     rowGrid.pro_publicidad = ($("#chk_publicidad").prop("checked")) ? 1 : 0;
-    rowGrid.pro_otros = ($("#chk_otros").prop("checked")) ? 1 : 0;
+    rowGrid.pro_otros = ($("#chk_otros").prop("checked")) ? 1 : 0;*/
+    
     rowGrid.accion = "new";
     return rowGrid;
 }
