@@ -167,3 +167,23 @@ create  table if not exists mg0026(
   equipo  varchar(15),
   foreign key (ids_sol) references mg0024 (ids_sol)
 )engine = innodb default charset=utf8 auto_increment=1;
+
+
+# solicitud referencias comerciales
+create  table if not exists mg0027(
+  ids_rec bigint(20) not null auto_increment primary key ,
+  ids_sol bigint(20),
+  nom_per varchar(60),  #nombre persona informa
+  cod_emp varchar(60),  #codigo de la empresa
+  dir_emp varchar(100), #direccion empresa
+  tel_emp varchar(20),	#telefono de residencia
+  car_emp varchar(100), #cargo empresa
+  obs_emp text,		#obrservacion Empresa
+  fec_ref varchar(10),  #fecha referencia empresa
+  est_log varchar(1),
+  fec_cre timestamp not null default current_timestamp,
+  fec_mod timestamp null default null,
+  usuario varchar(15),
+  equipo  varchar(15),
+  foreign key (ids_sol) references mg0024 (ids_sol)
+)engine = innodb default charset=utf8 auto_increment=1;

@@ -39,6 +39,7 @@ function findAndRemove(array, property, value) {
 }
 
 $(document).ready(function () {
+     InicioFormulario();//Inicia Datos de Formulario
      /*DATOS DE TABLA BANCO*/
     $('#add_Producto').click(function () {
         agregarItemsBanco('new');
@@ -46,6 +47,22 @@ $(document).ready(function () {
     
     
 });
+
+function loadDataCreate() {
+    iniciarUpload();
+    disableSolicitudPart1(true);
+    disableSolicitudPart2(true);
+    disableSolicitudPart3(true);
+
+}
+
+function InicioFormulario() { 
+    if (AccionTipo == "Update") {
+        loadDataUpdate();
+    } else if (AccionTipo == "Create") {
+        loadDataCreate();
+    }
+}
 
 /* INFORMACION DE BANCOS REFERENCIA*/
 
@@ -110,7 +127,7 @@ function eliminarItemsBanco(val, TbGtable) {
                 ids = $(this).find("td").eq(0).html();
                 alert(ids);
                 if (ids == val) {
-                    var array = findAndRemove(Grid, 'ids_rep', ids);
+                    var array = findAndRemove(Grid, 'ids_reb', ids);
                     sessionStorage.dts_refeBancos = JSON.stringify(array);
                     //if (count==0){sessionStorage.removeItem('detalleGrid')}
                     $(this).remove();
@@ -169,16 +186,11 @@ function agregarItemsBanco(opAccion) {
 
 function limpiarDetalle() {
     $('#txt_num_cta').val("");
-    //$('#txt_detalle_uso').val("");
-    $("#cmb_banco option[value=0]").attr("selected", true);
-//    $('#chk_envase').prop('checked', false);
-//    $('#chk_empaque').prop('checked', false);
-//    $('#chk_etiqueta').prop('checked', false);
-//    $('#chk_publicidad').prop('checked', false);
-//    $('#chk_otros').prop('checked', false);
+    $('#cmb_banco').val(0);
+    $('#cmb_tip_cta').val(0);
+    //$('#chk_envase').prop('checked', false);
     //Quita los Alertas
     removeIco('#txt_num_cta');
-  
 }
 
 function objProducto(indice) {
@@ -190,8 +202,8 @@ function objProducto(indice) {
     rowGrid.tip_cta =$('#cmb_tip_cta option:selected').val();
     rowGrid.nom_cta =$('#cmb_tip_cta option:selected').text();
     rowGrid.num_cta = $('#txt_num_cta').val();
-    rowGrid.cre_ban ='P'; 
-    //rowGrid.pro_envase = ($("#rbt_op1").prop("checked")) ? 1 : 0;
+    //rowGrid.cre_ban = ($("#rbt_op1").prop("checked")) ? 1 : 0;
+    rowGrid.cre_ban = $("input[name='rbt_op']:checked").val();
     rowGrid.accion = "new";
     return rowGrid;
 }
