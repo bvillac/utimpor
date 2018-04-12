@@ -58,9 +58,9 @@ create  table if not exists mg0024(
   cod_i_r varchar(2),   #cod identificacion cedula o ruc
   ced_ruc varchar(15),  #cedula o ruc del prospecto
   tip_con varchar(2),   #tipo de contribuyente sri
-  raz_soc varchar(100), #razon social de la empresa
+  raz_soc varchar(100), #razon social de la empresa o Representalte legal
   nom_rpl varchar(100), #nombre representante legal 
-  nom_due varchar(100), #nombre dueño de la empresa
+  nom_due varchar(100), #nombre dueño de la empresa(no)
   nom_ger varchar(100), #nombre gerente de la empresa
   tip_emp varchar(2),   #tipo empresa publica o privadad o distrib
   ano_act varchar(3),   #años de actividad de la empresa

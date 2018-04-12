@@ -125,7 +125,7 @@ function eliminarItemsBanco(val, TbGtable) {
         if (Grid.length > 0) {
             $('#' + TbGtable + ' tr').each(function () {
                 ids = $(this).find("td").eq(0).html();
-                alert(ids);
+                //alert(ids);
                 if (ids == val) {
                     var array = findAndRemove(Grid, 'ids_reb', ids);
                     sessionStorage.dts_refeBancos = JSON.stringify(array);
