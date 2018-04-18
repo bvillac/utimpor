@@ -660,9 +660,9 @@ class Utilities {
     
     public static function tipoEmpresa() {
         return [
-            '1' => Yii::t("formulario", "Privada"),
-            '2' => Yii::t("formulario", "Pública"),
-            '3' => Yii::t("formulario", "Distribuidor"),
+            '1' => Yii::t("formulario", "Pública"),
+            '2' => Yii::t("formulario", "Privada"),            
+            //'3' => Yii::t("formulario", "Distribuidor"),
  
         ];
     }
@@ -761,6 +761,23 @@ class Utilities {
             '1' => Yii::t("formulario", "Propia"),
             '2' => Yii::t("formulario", "Alquilada"),
             '3' => Yii::t("formulario", "Hipotecado"),
+        ];
+    }
+    public static function actividadComercial() {
+        return [
+            'NNN' => Yii::t("formulario", "-Select-"),
+            'COM' => Yii::t("formulario", "Comercial"),
+            'IND' => Yii::t("formulario", "Industrial"),
+            'SER' => Yii::t("formulario", "Servicio"),
+            'EDU' => Yii::t("formulario", "Educación"),
+        ];
+    }
+    
+    public static function tipoIdentificacion() {
+        return [
+            'R' => Yii::t("formulario", "Ruc"),//13 Digitos
+            'C' => Yii::t("formulario", "Cedula"),//10 Digitos
+            'P' => Yii::t("formulario", "Pasaporte"),//Pasaporte
         ];
     }
     

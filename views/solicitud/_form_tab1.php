@@ -7,7 +7,7 @@ use kartik\date\DatePicker;
 ?>
 <div class="col-md-6">
     <div class="form-group">
-        <label for="cmb_per_tipo_sangre" class="col-sm-3 control-label"><?= Yii::t("perfil", "Tipo Solicitud") ?></label>
+        <label for="cmb_tip_sol" class="col-sm-3 control-label"><?= Yii::t("perfil", "Tipo Solicitud") ?></label>
         <div class="col-sm-9">
             <?= Html::dropDownList("cmb_tip_sol", 0, app\models\Utilities::tipoSolicitud(), ["class" => "form-control", "id" => "cmb_tip_sol"]) ?>
         </div>
@@ -19,57 +19,25 @@ use kartik\date\DatePicker;
 
 <div class="col-md-6">
     <div class="form-group">
-        <label for="txt_per_nombre" class="col-sm-3 control-label"><?= Yii::t("perfil", "First Name") ?></label>
+        <label for="txt_raz_soc" class="col-sm-3 control-label"><?= Yii::t("perfil", "Nombres/Razón.Social") ?></label>
         <div class="col-sm-9">
-            <input type="text" class="form-control PBvalidation keyupmce" id="txt_per_nombre" data-type="alfa" data-keydown="true" placeholder="<?= Yii::t("perfil", "First Name") ?>">
-        </div>
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="txt_per_apellido" class="col-sm-3 control-label"><?= Yii::t("perfil", "Last Name") ?></label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control PBvalidation keyupmce" id="txt_per_apellido" data-type="alfa" data-keydown="true" placeholder="<?= Yii::t("perfil", "Last Name") ?>">
-        </div>
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="txt_per_ced_ruc" class="col-sm-3 control-label"><?= Yii::t("perfil", "DNI") ?></label>
-        <div class="col-sm-9">
-            <input type="text" maxlength="10" class="form-control PBvalidation keyupmce" id="txt_per_ced_ruc" data-type="cedula" data-keydown="true" placeholder="<?= Yii::t("perfil", "National identity document") ?>">
+            <input type="text" class="form-control PBvalidation keyupmce" id="txt_raz_soc" data-type="alfa" data-keydown="true" placeholder="<?= Yii::t("perfil", "Nombre / Razón Social") ?>">
         </div>
     </div>
 </div>
 
 <div class="col-md-6">
     <div class="form-group">
-        <label for="cmb_per_genero" class="col-sm-3 control-label"><?= Yii::t("perfil", "Sex") ?></label>
-        <div class="col-sm-9">
-            <?= Html::dropDownList("cmb_per_genero", 0, $genero, ["class" => "form-control", "id" => "cmb_per_genero"]) ?>
+        <label for="txt_ced_ruc" class="col-sm-3 control-label"><?= Yii::t("perfil", "Documento") ?></label>
+        <div class="col-sm-3">
+            <?= Html::dropDownList("cmb_cod_i_r", 0, app\models\Utilities::tipoIdentificacion(), ["class" => "form-control", "id" => "cmb_cod_i_r"]) ?>
         </div>
+        <div class="col-sm-6">
+            <input type="text" maxlength="15" class="form-control PBvalidation keyupmce" id="txt_ced_ruc" data-type="cedula" data-keydown="true" placeholder="<?= Yii::t("perfil", "National identity document") ?>">
+        </div>
+        
     </div>
 </div>
-
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="cmb_per_estado_civil" class="col-sm-3 control-label"><?= Yii::t("perfil", "Marital Status") ?></label>
-        <div class="col-sm-9">
-            <?= Html::dropDownList("cmb_per_estado_civil", 0, $estCivil, ["class" => "form-control", "id" => "cmb_per_estado_civil"]) ?>
-        </div>
-    </div>
-</div>
-
-
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="txt_per_correo" class="col-sm-3 control-label"><?= Yii::t("perfil", "Email") ?></label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control PBvalidation" id="txt_per_correo" data-type="email" data-keydown="true" placeholder="<?= Yii::t("perfil", "Email") ?>">
-        </div>
-    </div>
-</div>
-
 <div class="col-md-6">
     <div class="form-group">
         <label for="cmb_tip_con" class="col-sm-3 control-label"><?= Yii::t("formulario", "Contribuyente") ?></label>
@@ -90,16 +58,6 @@ use kartik\date\DatePicker;
         </div>
     </div>
 </div>
-
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="txt_raz_soc" class="col-sm-3 control-label"><?= Yii::t("perfil", "Razón Social") ?></label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control PBvalidation keyupmce" id="txt_raz_soc" data-type="alfa" data-keydown="true" placeholder="<?= Yii::t("perfil", "Razón Social") ?>">
-        </div>
-    </div>
-</div>
-
 <div class="col-md-6">
     <div class="form-group">
         <label for="txt_nom_rpl" class="col-sm-3 control-label"><?= Yii::t("perfil", "Representante Legal") ?></label>
@@ -108,24 +66,24 @@ use kartik\date\DatePicker;
         </div>
     </div>
 </div>
-
 <div class="col-md-6">
     <div class="form-group">
-        <label for="txt_nom_due" class="col-sm-3 control-label"><?= Yii::t("perfil", "Nombre Dueño") ?></label>
+        <label for="txt_corre_e" class="col-sm-3 control-label"><?= Yii::t("perfil", "Email") ?></label>
         <div class="col-sm-9">
-            <input type="text" class="form-control PBvalidation keyupmce" id="txt_nom_due" data-type="alfa" data-keydown="true" placeholder="<?= Yii::t("perfil", "Nombre Dueño") ?>">
+            <input type="text" class="form-control PBvalidation" id="txt_corre_e" data-type="email" data-keydown="true" placeholder="<?= Yii::t("perfil", "Email") ?>">
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="cmb_act_com" class="col-sm-3 control-label"><?= Yii::t("perfil", "Act.Comercial") ?></label>
+        <div class="col-sm-9">
+            <?= Html::dropDownList("cmb_act_com", 0, app\models\Utilities::actividadComercial(), ["class" => "form-control", "id" => "cmb_act_com"]) ?>
         </div>
     </div>
 </div>
 
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="txt_nom_ger" class="col-sm-3 control-label"><?= Yii::t("perfil", "Nombre Gerente") ?></label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control PBvalidation keyupmce" id="txt_nom_ger" data-type="alfa" data-keydown="true" placeholder="<?= Yii::t("perfil", "Nombre Gerente") ?>">
-        </div>
-    </div>
-</div>
+
 
 
 <!--<div class="col-md-6">
@@ -154,14 +112,7 @@ use kartik\date\DatePicker;
         </div>
     </div>
 </div>-->
-<!--<div class="col-md-6">
-    <div class="form-group">
-        <label for="cmb_per_tipo_sangre" class="col-sm-3 control-label"><?= Yii::t("perfil", "Blood type") ?></label>
-        <div class="col-sm-9">
-            <?= Html::dropDownList("cmb_per_tipo_sangre", 0, app\models\Utilities::grupoSanguineo(), ["class" => "form-control", "id" => "cmb_per_tipo_sangre"]) ?>
-        </div>
-    </div>
-</div>-->
+
 
 
 

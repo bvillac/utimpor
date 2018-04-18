@@ -40,11 +40,22 @@ class SolicitudController extends Controller {
     public function actionCreate() {
         $data = null;
         //$Model = new Medico();
-        //$dataProvider = $Model->consultarMedicos($data);
+        //$dataProvider = $Model->consultarMedicos($data);        
         if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+            if (isset($data["getcantones"])) {
+                $cantones = Canton::getCantonesByProvinciaID($data['prov_id']);
+                $message = [
+                    "cantones" => $cantones,
+                ];
+                echo Utilities::ajaxResponse('OK', 'alert', Yii::t('jslang', 'Success'), 'false', $message);
+                return;
+            }
             
         }
-        
+        //$paises = Pais::getPaises();
+        $provincias = array();
+        $cantones = array();
         $provincias = Provincia::getProvinciasByPaisID($this->id_pais);
         if (count($provincias) > 0) {
             $cantones = Canton::getCantonesByProvinciaID($provincias[0]["Ids"]);

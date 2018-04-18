@@ -38,8 +38,28 @@ function findAndRemove(array, property, value) {
     return array;
 }
 
+
+function obtenerCanton() {
+    var link = $('#txth_base').val() + "/solicitud/create";
+    var arrParams = new Object();
+    arrParams.prov_id = $('#cmb_provincia').val();
+    arrParams.getcantones = true;
+    requestHttpAjax(link, arrParams, function (response) {
+        if (response.status == "OK") {
+            data = response.message;
+            setComboData(data.cantones, "cmb_ciudad");
+        }
+    }, true);
+}
+
+
 $(document).ready(function () {
      InicioFormulario();//Inicia Datos de Formulario
+     
+    $('#cmb_provincia').change(function () {
+        obtenerCanton();
+    });
+     
      /*DATOS DE TABLA BANCO*/
     $('#add_Producto').click(function () {
         agregarItemsBanco('new');
@@ -49,10 +69,10 @@ $(document).ready(function () {
 });
 
 function loadDataCreate() {
-    iniciarUpload();
-    disableSolicitudPart1(true);
-    disableSolicitudPart2(true);
-    disableSolicitudPart3(true);
+    //iniciarUpload();
+    //disableSolicitudPart1(true);
+    //disableSolicitudPart2(true);
+    //disableSolicitudPart3(true);
 
 }
 

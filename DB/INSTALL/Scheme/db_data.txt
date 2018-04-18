@@ -58,16 +58,17 @@ create  table if not exists mg0024(
   cod_i_r varchar(2),   #cod identificacion cedula o ruc
   ced_ruc varchar(15),  #cedula o ruc del prospecto
   tip_con varchar(2),   #tipo de contribuyente sri
-  raz_soc varchar(100), #razon social de la empresa o Representalte legal
-  nom_rpl varchar(100), #nombre representante legal 
+  raz_soc varchar(100), #razon social de la empresa o Representante legal
+  nom_rpl varchar(100), #nombre representante legal (no)
   nom_due varchar(100), #nombre dueño de la empresa(no)
-  nom_ger varchar(100), #nombre gerente de la empresa
-  tip_emp varchar(2),   #tipo empresa publica o privadad o distrib
+  nom_ger varchar(100), #nombre gerente de la empresa (no)
+  tip_emp varchar(2),   #tipo empresa publica o privadad
   ano_act varchar(3),   #años de actividad de la empresa
   cod_pai varchar(2),
   cod_ciu varchar(2),
   dir_rpl varchar(100), #direccion del representante legal
   corre_e varchar(100), #correo electronico
+  act_com varchar(3), #actividad comercial
   tel_cel varchar(50),  #telefonos movil separado por ;
   tel_n01 varchar(50),  #telefonos separado por ;
   num_fax varchar(50),
@@ -174,7 +175,7 @@ create  table if not exists mg0027(
   ids_rec bigint(20) not null auto_increment primary key ,
   ids_sol bigint(20),
   nom_per varchar(60),  #nombre persona informa
-  cod_emp varchar(60),  #codigo de la empresa
+  nom_emp varchar(100),  #nombre de la empresa
   dir_emp varchar(100), #direccion empresa
   tel_emp varchar(20),	#telefono de residencia
   car_emp varchar(100), #cargo empresa
