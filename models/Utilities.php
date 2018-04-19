@@ -776,9 +776,18 @@ class Utilities {
     public static function tipoIdentificacion() {
         return [
             'R' => Yii::t("formulario", "Ruc"),//13 Digitos
-            'C' => Yii::t("formulario", "Cedula"),//10 Digitos
+            'C' => Yii::t("formulario", "Cédula"),//10 Digitos
             'P' => Yii::t("formulario", "Pasaporte"),//Pasaporte
         ];
+    }
+    
+    public static function trayectoriaAnos() {
+        $cont = array();
+        //for ($i = 0; $i < 100; $i=$i+10) {
+        for ($i = 0; $i < 100; $i++) {
+            $cont[] = $i;
+        }
+        return $cont;
     }
     
     /*

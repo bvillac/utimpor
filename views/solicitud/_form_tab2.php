@@ -82,7 +82,73 @@ use kartik\date\DatePicker;
     </div>
 </div>
 
+<!-- PARTE 2 -->
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="txt_nom_per_inf" class="col-sm-3 control-label"><?= Yii::t("perfil", "Nombre Informante") ?></label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control PBvalidation keyupmce" id="txt_nom_per_inf" data-type="alfa" data-keydown="true" placeholder="<?= Yii::t("perfil", "Nombre persona que Informa") ?>">
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="txt_car_emp" class="col-sm-3 control-label"><?= Yii::t("perfil", "Cargo") ?></label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control PBvalidation keyupmce"  id="txt_car_emp" data-type="all" data-keydown="true" placeholder="<?= Yii::t("perfil", "Cargo") ?>">
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="txt_nom_emp" class="col-sm-3 control-label"><?= Yii::t("perfil", "Nombre Empresa") ?></label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control PBvalidation keyupmce" id="txt_nom_emp" data-type="all" data-keydown="true" placeholder="<?= Yii::t("perfil", "Nombre de la Empresa") ?>">
+        </div>
+    </div>
+</div>
 
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="txt_tel_emp" class="col-sm-3 control-label"><?= Yii::t("perfil", "Teléfono") ?></label>
+        <div class="col-sm-9">
+            <input type="text" maxlength="13" class="form-control PBvalidation keyupmce"  id="txt_tel_emp" data-type="celular" data-keydown="true" placeholder="<?= Yii::t("perfil", "Teléfono") ?>">
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="dtp_fec_ref" class="col-sm-3 control-label"><?= Yii::t("perfil", "Fecha") ?></label>
+        <div class="col-sm-9">
+             <?=
+                DatePicker::widget([
+                    'id' => 'dtp_fec_ref',
+                    'name' => 'dtp_fec_ref',
+                    'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                    //'value' => '23-Feb-1982',
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' => Yii::$app->params["datePickerDefault"]
+                    ],
+                    'options' => [
+                        'class' => 'form-control',
+                        //'Onchange' => 'actualizarGrid()',
+                        'readonly' => 'readonly',
+                        'placeholder' => Yii::t("perfil", "Fecha")//'Enter birth date ...'
+                    ]
+                ]);
+                ?>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="txta_obs_emp" class="col-sm-3 control-label"><?= Yii::t("perfil", "Observación") ?></label>
+        <div class="col-sm-9">
+            <textarea id="txta_obs_emp" class="form-control" rows="2" placeholder="Enter ..."></textarea>
+        </div>
+    </div>
+</div>
 
 <div class="col-md-12">
     <h3><?= Yii::t("perfil", "Referencia Bancaria") ?></h3>
@@ -161,7 +227,7 @@ use kartik\date\DatePicker;
     </div>
 
 </div>
-<div class="col-md-6">
+<!--<div class="col-md-6">
     <div class="col-sm-3">  
         <?= Html::a('<span class="glyphicon glyphicon-erase"></span> ' . Yii::t("accion", "Limpiar"), 'javascript:', ['id' => 'cmd_clearCita','class' => 'btn btn-primary btn-block']); ?>   
     </div>
@@ -175,7 +241,7 @@ use kartik\date\DatePicker;
                 <a id="add_Producto" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span><?= Yii::t("formulario", "Add Product") ?></a>
             </div>
         </div>  
-    </div>
+    </div>-->
 
 <div class="col-md-12">
     <div class="form-group">
@@ -237,5 +303,42 @@ use kartik\date\DatePicker;
         </div>
     </div>
 </div>
+
+<!-- PARTE 2 -->
+
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="txt_nom_per" class="col-sm-3 control-label"><?= Yii::t("perfil", "Nombre Parentesco") ?></label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control PBvalidation keyupmce" id="txt_nom_per" data-type="alfa" data-keydown="true" placeholder="<?= Yii::t("perfil", "Nombre Parentesco") ?>">
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="txt_tel_res" class="col-sm-3 control-label"><?= Yii::t("perfil", "Teléfono Residencía") ?></label>
+        <div class="col-sm-9">
+            <input type="text" maxlength="13" class="form-control PBvalidation keyupmce"  id="txt_tel_res" data-type="celular" data-keydown="true" placeholder="<?= Yii::t("perfil", "Teléfono Residencía") ?>">
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="txt_dir_per" class="col-sm-3 control-label"><?= Yii::t("perfil", "Address") ?></label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control PBvalidation keyupmce" id="txt_dir_per" data-type="all" data-keydown="true" placeholder="<?= Yii::t("perfil", "Address") ?>">
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="txt_tel_tra" class="col-sm-3 control-label"><?= Yii::t("perfil", "Teléfono Trabajo") ?></label>
+        <div class="col-sm-9">
+            <input type="text" maxlength="13" class="form-control PBvalidation keyupmce"  id="txt_tel_tra" data-type="celular" data-keydown="true" placeholder="<?= Yii::t("perfil", "Teléfono Trabajo") ?>">
+        </div>
+    </div>
+</div>
+
 
 <div class="row"></div>

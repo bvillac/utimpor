@@ -9,6 +9,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
+<?= Html::hiddenInput('txth_ids_sol', 0,['id' =>'txth_ids_sol']); ?>
+
 
 <div class="col-md-12">
     <div class="nav-tabs-custom">
