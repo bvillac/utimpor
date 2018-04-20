@@ -307,8 +307,7 @@ function guardarSolicitud(accion) {
 
 function dataSolicitud(ID) {
     var datArray = new Array();
-    var objDat = new Object();
-    
+    var objDat = new Object();    
     objDat.ids_sol = ID;//Genero Automatico
     
     objDat.cod_emp  ='99'
