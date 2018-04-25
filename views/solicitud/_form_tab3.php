@@ -112,30 +112,6 @@ use branchonline\lightbox\Lightbox;
 </div>
 
 
-<div class="col-md-12">
-    <h3><?= Yii::t("formulario", "Aspiración de Crédito.") ?></h3>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="txt_cre_sol" class="col-sm-3 control-label"><?= Yii::t("perfil", "Monto Solicitado") ?></label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control PBvalidation keyupmce" id="txt_cre_sol" data-type="all" data-keydown="true" placeholder="<?= Yii::t("perfil", "Monto Solicitado") ?>">
-        </div>
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="cmb_idforma" class="col-sm-3 control-label"><?= Yii::t("perfil", "Forma Pago") ?></label>
-        <div class="col-sm-9">
-            <?=
-            Html::dropDownList(
-                    "cmb_idforma", 0, ['0' => Yii::t('formulario', '-Select-')] + ArrayHelper::map(app\models\Utilities::formaPago(), 'Ids', 'Nombre'), ["class" => "form-control", "id" => "cmb_idforma"]
-            )
-            ?>
-        </div>
-        
-    </div>
-</div>
 
 
 <div class="row"></div>

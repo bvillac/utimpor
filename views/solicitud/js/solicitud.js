@@ -90,6 +90,11 @@ $(document).ready(function () {
         agregarItemsBanco('new');
     });
     
+    $('#cmb_tip_sol').change(function () {
+        //Tipo Solicitud
+        tipoSolicitud();
+    });
+    
     
 });
 
@@ -347,4 +352,21 @@ function dataSolicitud(ID) {
     return datArray;
 }
 
+
+function tipoSolicitud() {
+    //$("#div_otrasMarca").html("");
+    if ($('#cmb_tip_sol').val()=="D"){
+        $('#div_Distribuidor').show();
+        //$('#paso3').show();
+        $('#txtab_paso3').show();
+        $('#div_Final').hide();
+    }else{
+        $('#div_Final').show();
+        $('#div_Distribuidor').hide();
+        //$('#paso3').hide();
+        $('#txtab_paso3').hide();
+    } 
+    
+    
+}
 

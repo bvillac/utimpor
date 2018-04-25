@@ -107,6 +107,14 @@ class cls_MG0024_Ado extends \yii\db\ActiveRecord {
         $command->bindParam(":nom_cto", $data[0]['nom_cto'], \PDO::PARAM_STR);
         $command->bindParam(":idforma", $data[0]['idforma'], \PDO::PARAM_INT);
         $command->bindParam(":cre_sol", $data[0]['cre_sol'], \PDO::PARAM_STR);
+        $command->bindParam(":lim_cre", $data[0]['lim_cre'], \PDO::PARAM_STR);
+        $command->bindParam(":max_cre", $data[0]['max_cre'], \PDO::PARAM_STR);
+        $command->bindParam(":lim_dia", $data[0]['lim_dia'], \PDO::PARAM_STR);
+        $command->bindParam(":tip_viv", $data[0]['tip_viv'], \PDO::PARAM_STR);
+        $command->bindParam(":nom_arr", $data[0]['nom_arr'], \PDO::PARAM_STR);
+        $command->bindParam(":tel_arr", $data[0]['tel_arr'], \PDO::PARAM_STR);
+        $command->bindParam(":tip_loc", $data[0]['tip_loc'], \PDO::PARAM_STR);
+        $command->bindParam(":tim_loc", $data[0]['tim_loc'], \PDO::PARAM_STR);
         $command->bindParam(":cod_i_r", $data[0]['cod_i_r'], \PDO::PARAM_STR);
         $command->bindParam(":cod_i_r", $data[0]['cod_i_r'], \PDO::PARAM_STR);
         $command->bindParam(":cod_i_r", $data[0]['cod_i_r'], \PDO::PARAM_STR);
@@ -114,6 +122,7 @@ class cls_MG0024_Ado extends \yii\db\ActiveRecord {
         $command->bindParam(":cod_i_r", $data[0]['cod_i_r'], \PDO::PARAM_STR);
         $command->bindParam(":cod_i_r", $data[0]['cod_i_r'], \PDO::PARAM_STR);
         $command->bindParam(":cod_i_r", $data[0]['cod_i_r'], \PDO::PARAM_STR);
+        
         
         
         

@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <a href="#paso1" data-toggle="tab" aria-expanded="true"><?= Yii::t("perfil", "Información General") ?></a>
             </li>
             <li class=""><a href="#paso2" data-toggle="tab" aria-expanded="false"><?= Yii::t("perfil", "Referencia") ?></a></li>
-            <li class=""><a href="#paso3" data-toggle="tab" aria-expanded="false"><?= Yii::t("perfil", "Patrimonios") ?></a></li>
+            <li class=""><a href="#paso3" data-toggle="tab" aria-expanded="false" id="txtab_paso3" style="display: none"><?= Yii::t("perfil", "Patrimonios") ?></a></li>
             <li class=""><a href="#paso4" data-toggle="tab" aria-expanded="false"><?= Yii::t("perfil", "Observacines") ?></a></li>
         </ul>
         <div class="tab-content">
@@ -49,8 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <form class="form-horizontal">
                     <?= 
                     $this->render('_form_tab3', 
-                        [//'provincias' => $provincias,
-                        
+                        [//'provincias' => $provincias,                        
                          //'objetivos' => $objetivos
                             ]); ?>
                 </form>
