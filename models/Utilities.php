@@ -770,6 +770,7 @@ class Utilities {
             'IND' => Yii::t("formulario", "Industrial"),
             'SER' => Yii::t("formulario", "Servicio"),
             'EDU' => Yii::t("formulario", "Educación"),
+            'OTR' => Yii::t("formulario", "Otras Actividades"),
         ];
     }
     
